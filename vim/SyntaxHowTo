@@ -1,0 +1,6 @@
+Add syntax file to vim's syntax directory.
+Add the following to filetype.vim:
+
+" Actionscript
+au BufNewFile,BufRead *.as                      setf actionscript
+

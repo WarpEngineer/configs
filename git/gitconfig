@@ -1,0 +1,7 @@
+# This is Git's per-user configuration file.
+# to reset author after changing here: git commit --amend --reset-author
+[user]
+name = WarpEngineer
+email = <email>
+[push]
+	default = simple

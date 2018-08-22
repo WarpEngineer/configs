@@ -1,0 +1,121 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" use the following line if Pathogen is installed
+" execute pathogen#infect()
+
+if has("vms")
+  set nobackup          " do not keep a backup file, use versions instead
+else
+  set backup            " keep a backup file
+endif
+set history=50          " keep 50 lines of command line history
+set ruler               " show the cursor position all the time
+set showcmd             " display incomplete commands
+set incsearch           " do incremental searching
+" set number
+" set relativenumber
+
+set statusline=%f%m%r%h%w\ %y\ %l,%v\ %p%%\ %L
+set laststatus=2
+
+" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
+" let &guioptions = substitute(&guioptions, "t", "", "g")
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" This is an alternative that also works in block mode, but the deleted
+" text is lost and it only works for putting the current register.
+"vnoremap p "_dp
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+  set ruler
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  augroup END
+
+else
+
+  set autoindent                " always set autoindenting on
+
+endif " has("autocmd")
+
+
+"" Turn this on if ShortTabLine.vim is available. 
+"" Can also place under ~/.vim/plugin and not use the 1st line.
+"so ~/.vim/ShortTabLine.vim
+"set tabline=%!ShortTabLine()
+
+" List of plugins I like
+" jedi-vim/
+" vim-airline-themes/
+" vim-airline/
+" vim-erlang-omnicomplete/
+" vim-lion/
+" vim-scala/
+" vim-signify/
+" vim-surround/
+" vim-tmux-navigator/
+" vim-erlang-skeletons/
+" vim-todo-lists/
+
+" Header formatting. 
+nmap H1 yypVr=o
+nmap H2 yypVr-o
+nmap H3 :s/\(.*\)/-\1-/<cr>o
+nnoremap <F5> "=strftime('%Y-%m-%d %T')"<CR>p
+inoremap <F5> <C-R>=strftime('%Y-%m-%d %T')<CR>
+
+" If NERDTreeTabs is installed map tree toggle
+" nmap <F2> :NERDTreeTabsToggle<cr>
+" let g:nerdtree_tabs_open_on_console_startup=1
+
+" jedi vim option not to show complete preview window since it's annyoing.
+" autocmd FileType python setlocal completeopt-=preview
+
+" for system ctags support, run the following command:
+"    ctags -R -f ~/.vim/systags /usr/include /usr/local/include
+" then uncomment the following line:
+" set tags+=~/.vim/systags
+
+" for Airline, disable annoying whitespace detection
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline_theme='simple'
+
+" for vim-todo-lists, don't move finished items to the bottom
+" let g:VimTodoListsMoveItems = 0
+"
+
+
