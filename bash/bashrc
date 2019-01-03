@@ -30,6 +30,10 @@ export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
+function rmd() {
+	pandoc $1 | lynx -stdin
+}
+
 #http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 export MARKPATH=$HOME/.marks
 function jump { 
