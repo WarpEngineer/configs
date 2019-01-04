@@ -10,6 +10,7 @@ alias whatslistening='lsof -n -i4TCP | grep LISTEN'
 alias whatsusingnet='lsof -P -i -n | cut -f 1 -d " " | uniq'
 alias pipup="pip freeze --local | grep -v '^\-e' | grep -iv Django | cut -d = -f 1 | xargs -n1 pip install -U"
 alias graph='git log --all --decorate --oneline --graph'
+alias vgraph="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
 if [[ $OSTYPE == *linux* ]]
 then
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
