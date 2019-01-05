@@ -15,6 +15,11 @@ if [[ $OSTYPE == *linux* ]]
 then
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 fi
+
+# python command line oneliners
+alias pymail='python -m smtpd -n -c DebuggingServer localhost:20025'
+alias pyjq='python -mjson.tool'
+alias pyhttp='python -m SimpleHTTPServer'
 #
 set -o vi
 export EDITOR=vim
