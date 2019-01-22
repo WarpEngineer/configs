@@ -90,6 +90,8 @@ endif " has("autocmd")
 " vim-tmux-navigator/
 " vim-erlang-skeletons/
 " vim-todo-lists/
+" auto-pairs/
+" nerdcommenter/
 
 " Header formatting. 
 nmap H1 yypVr=o
