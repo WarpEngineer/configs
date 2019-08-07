@@ -11,10 +11,13 @@ alias whatsusingnet='lsof -P -i -n | cut -f 1 -d " " | uniq'
 alias pipup="pip freeze --local | grep -v '^\-e' | grep -iv Django | cut -d = -f 1 | xargs -n1 pip install -U"
 alias graph='git log --all --decorate --oneline --graph'
 alias vgraph="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
+alias svnd='svn diff | view -'
 if [[ $OSTYPE == *linux* ]]
 then
 alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 fi
+alias yarnlistuser='yarn application -list -appStates finished,running | grep'
+alias yarnlog='yarn logs -applicationId'
 
 # python command line oneliners
 alias pymail='python -m smtpd -n -c DebuggingServer localhost:20025'
@@ -35,6 +38,9 @@ fi
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+
+function dict() { (env dict $1 && echo "local dict used") || (curl dict://dict.org/d:$1 && echo "remote dict called")  }
+function cheat() { (env cheat $1 && echo "local cheat used") || (curl cheat.sh/$1 && echo "remote cheat called") }
 
 function rmd() {
 	pandoc $1 | lynx -stdin
