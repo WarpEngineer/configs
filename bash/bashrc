@@ -38,6 +38,7 @@ fi
 export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+export ERL_AFLAGS="+pc unicode -kernel shell_history enabled"
 
 function dict() { (env dict $1 && echo "local dict used") || (curl dict://dict.org/d:$1 && echo "remote dict called")  }
 function cheat() { (env cheat $1 && echo "local cheat used") || (curl cheat.sh/$1 && echo "remote cheat called") }
