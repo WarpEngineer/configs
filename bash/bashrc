@@ -1,4 +1,6 @@
 export HISTCONTROL=ignoreboth:erasedups
+# turn off flow control
+stty -ixon
 
 alias ls='ls -G'
 alias ll='ls -l'
