@@ -101,6 +101,9 @@ nmap H3 :s/\(.*\)/-\1-/<cr>o
 nnoremap <F5> "=strftime('%Y-%m-%d %T')"<CR>p
 inoremap <F5> <C-R>=strftime('%Y-%m-%d %T')<CR>
 
+set path+=**
+set wildmenu
+
 " If NERDTreeTabs is installed map tree toggle
 " nmap <F2> :NERDTreeTabsToggle<cr>
 " let g:nerdtree_tabs_open_on_console_startup=1
