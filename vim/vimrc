@@ -124,4 +124,6 @@ set wildmenu
 " let g:VimTodoListsMoveItems = 0
 "
 
-
+" the following is for use with scalariform
+" au BufEnter *.scala setl formatprg=java\ -jar\ ~/bin/scalariform.jar\ -f\ -q\ +compactControlReadability\ +indentWithTabs\ +doubleIndentConstructorArguments\ +preserveSpaceBeforeArguments\ +spaceInsideBrackets\ +spaceInsideParentheses\ --stdin\ --stdout
+" au BufEnter *.scala setl equalprg=java\ -jar\ ~/bin/scalariform.jar\ -f\ -q\ +compactControlReadability\ +indentWithTabs\ +doubleIndentConstructorArguments\ +preserveSpaceBeforeArguments\ +spaceInsideBrackets\ +spaceInsideParentheses\ --stdin\ --stdout
