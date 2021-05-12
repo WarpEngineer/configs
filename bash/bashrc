@@ -20,6 +20,7 @@ alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-ti
 fi
 alias yarnlistuser='yarn application -list -appStates finished,running | grep'
 alias yarnlog='yarn logs -applicationId'
+alias tmux='tmux -u' # UTF support
 
 # python command line oneliners
 alias pymail='python -m smtpd -n -c DebuggingServer localhost:20025'
