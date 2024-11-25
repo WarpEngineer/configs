@@ -1,0 +1,54 @@
+set -o vi
+bindkey '^R' history-incremental-search-backward
+
+export CLICOLOR=1
+export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+alias ls='ls -G'
+alias ll='ls -l'
+alias ltr='ls -ltr'
+alias topmemproc='ps aux |head -1;ps aux |tail -n+1 |sort -nrk4 |head -$(($(tput lines)-1)) |cut -c 1-$(tput cols)'
+alias c='calculate'
+alias sml='rlwrap sml'
+alias whatslistening='lsof -n -i4TCP | grep LISTEN'
+alias whatsusingnet='lsof -P -i -n | cut -f 1 -d " " | uniq'
+alias pipup="pip freeze --local | grep -v '^\-e' | grep -iv Django | cut -d = -f 1 | xargs -n1 pip install -U"
+alias graph='git log --all --decorate --oneline --graph'
+alias vgraph="git log --graph --pretty=format:'%h - %d %s (%cr) <%an>' | vim -R -c 'set filetype=git nowrap' -"
+alias svnd='svn diff | view -'
+alias tmux='tmux -u' # UTF support
+alias lg='lazygit'
+alias clean='rm -f *~'
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export MARKPATH=$HOME/.marks
+function jump {
+        cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+        mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark {
+        rm -i "$MARKPATH/$1"
+}
+function marks {
+        \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
+_completemarks() {
+        local curw=${COMP_WORDS[COMP_CWORD]}
+        local wordlist=$(find $MARKPATH -type l -exec basename {} \;)
+        COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+        return 0
+}
+#complete -F _completemarks jump unmark
+
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[45;93m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    command man "$@"
+}
