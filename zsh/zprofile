@@ -19,6 +19,7 @@ alias svnd='svn diff | view -'
 alias tmux='tmux -u' # UTF support
 alias lg='lazygit'
 alias clean='rm -f *~'
+alias diff='diff --color'
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
