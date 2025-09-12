@@ -16,3 +16,23 @@ precmd () { vcs_info } # always load before displaying the prompt
 zstyle ':vcs_info:git*' formats ' ↣ (%F{254}%b%F{245})' # format $vcs_info_msg_0_
 
 PS1='%F{254}%n%F{245} ↣ %F{153}%(5~|%-1~/⋯/%3~|%4~)%F{245}${vcs_info_msg_0_} $(parse_git_dirty)$NEWLINE%F{254}$%f '
+
+export PATH=/Users/george.madi/bin:$PATH
+export PATH=/Users/george.madi/.cache/rebar3/bin:$PATH
+export GPG_TTY=$(tty)
+
+#source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit
+compinit
+# Makefile target completion
+function _makefile_targets {
+    local -a targets
+    targets=($(command make -qp 2>/dev/null | awk -F':' '/^[a-zA-Z0-9][^$#\/\t=]*:([^=]|$)/ && !/^Makefile/ {split($1,A,/ /);for(i in A)print A[i]}' | sort -u))
+    compadd $targets
+}
+
+compdef _makefile_targets make
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
