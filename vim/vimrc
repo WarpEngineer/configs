@@ -4,6 +4,10 @@ set nocompatible
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+set textwidth=0 wrapmargin=0
+set colorcolumn=100
+set expandtab tabstop=4 shiftwidth=4
+set bg=dark
 
 " use the following line if Pathogen is installed
 " execute pathogen#infect()
