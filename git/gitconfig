@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 # to reset author after changing here: git commit --amend --reset-author
 [core]
-    excludefile = ~/.gitignore_global
+    excludesfile = ~/.gitignore_global
     hooksPath = ~/git/hooks
 [user]
     name = my name
