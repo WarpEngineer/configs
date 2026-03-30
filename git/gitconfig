@@ -1,7 +1,15 @@
 # This is Git's per-user configuration file.
 # to reset author after changing here: git commit --amend --reset-author
+[core]
+    excludefile = ~/.gitignore_global
+    hooksPath = ~/git/hooks
 [user]
-name = WarpEngineer
-email = <email>
+    name = my name
+    email = <email>
+    signingKey = my key
 [push]
 	default = simple
+[commit]
+    gpgSign = true
+[tag]
+    gpgSign = true
