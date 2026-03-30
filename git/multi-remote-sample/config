@@ -1,0 +1,16 @@
+[core]
+  ...
+[remote "origin"]
+  url = git@github.com:WarpEngineer/repo.git
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "other"]
+  url = git@github.com:WarpEngineer/other_repo.git
+  fetch = +refs/heads/*:refs/remotes/other/*
+[includeIf "onbranch:some_feature"]
+  path = config.other
+[branch "main"]
+  remote = origin
+  merge = refs/heads/main
+[branch "some_feature"]
+  remote = other
+  merge = refs/heads/some_feature
