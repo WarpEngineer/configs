@@ -38,3 +38,8 @@ function _makefile_targets {
 compdef _makefile_targets make
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# GH CLI
+# Can run: gh config set telemetry disabled
+export GH_TELEMETRY=false
+export DO_NOT_TRACK=true
