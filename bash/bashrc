@@ -131,3 +131,8 @@ man() {
     LESS_TERMCAP_se=$'\e[0m' \
     command man "$@"
 }
+
+# GH CLI
+# Can run: gh config set telemetry disabled
+export GH_TELEMETRY=false
+export DO_NOT_TRACK=true
